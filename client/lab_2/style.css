@@ -8,7 +8,7 @@
 */
 
 html {
-  background-color: rgb(225, 47, 47);
+  background-color: #ffffff;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -80,6 +80,10 @@ form {
   padding-bottom: 1.5rem;
 }
 
+.synopsis {
+  color: #7E8184;        /* Light gray */
+  font-style: italic;
+}
 
 /*
   This rule implies that the H1 tag lives within another HTML tag
