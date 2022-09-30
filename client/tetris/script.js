@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  //function undraw() {
+  function undraw() {
     current.forEach(index => {
         squares[currentPosition + index].classList.remove('tetromino')
     })
@@ -71,8 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //moveDown function
   function moveDown() {
     undraw()
-    currentPosition += wifth
-    draw()
+    currentPosition += width
   }
-
-})
+}
