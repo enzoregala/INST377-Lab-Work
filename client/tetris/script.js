@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // randomly select a Tetromino and its first rotation
   let random = Math.floor(Math.random()*theTetrominoes.length)
   console.log(random)
-  let current = theTetrominoes[random][0]
+  let current = theTetrominoes[random][currentRotation]
 
   // draw the tetromino
 
@@ -64,6 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[currentPosition + index].classList.remove('tetromino')
     })
   }
-
-  draw()
+  
 })
