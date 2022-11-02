@@ -118,7 +118,7 @@ async function mainEvent() {
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
-    form.addEventListener('input', (event)=>{
+    form.addEventListener('input', (event) => {
       console.log(event.target.value);
     });
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
