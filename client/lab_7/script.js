@@ -73,6 +73,14 @@ function processRestaurants(list) {
     */
 }
 
+function filterList(array, filterInputValue) {
+    return array.filter((item) => {
+        const lowerCaseName = item.name.toLowerCase();
+        const lowerCaseQuery = item.name.toLowerCase();
+        return lowerCaseName.includes(lowerCaseQuery);
+    })
+}
+
 async function mainEvent() {
   /*
       ## Main Event
@@ -123,8 +131,9 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     form.addEventListener('input', (event) => {
-        console.log('input', event.target.value);
-        injectHTML(currentList);
+        console.log(event.target.value);
+        const newFilterList = filterList(arrayFromJson.data, event.target.value);
+        injectHTML(newFilterList);
     });
 
     form.addEventListener('input', (event) => {
