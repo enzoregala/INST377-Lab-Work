@@ -111,12 +111,21 @@ async function mainEvent() {
   console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"
+  if (!arrayFromJson.data?.length) { return; } // Return if we have no data
+
+  let currentList = [];
+
+
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
     // Let's hide the load button now that we have some data to manipulate
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
+
+    form.addEventListener('input', (event) => {
+        console.log('input', event.target.value);
+        injectHTML(currentList);
+    });
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
@@ -128,11 +137,11 @@ async function mainEvent() {
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      const restaurantList = processRestaurants(arrayFromJson.data);
-      console.log(restaurantList);
+      currentList = processRestaurants(arrayFromJson.data);
+      console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(restaurantList);
+      injectHTML(currentList);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time
