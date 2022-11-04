@@ -99,19 +99,18 @@ async function mainEvent() {
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson.data?.length) { return; }
-  
-  let currentList = [];
-
-  submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
+    submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
     // Let's hide the load button now that we have some data to manipulate
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
+    let currentList = [];
+    
     form.addEventListener('input', (event) => {
       console.log('input', event.target.value);
       injectHTML(currentList);
-    })
+    });
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
