@@ -78,7 +78,7 @@ async function mainEvent() {
 
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto '); // get a reference to your submit button
+  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   submit.style.display = 'none'; // let your submit button disappear
 
@@ -97,7 +97,7 @@ async function mainEvent() {
     The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
   */
   console.log('Test PG County Set')
-  console.table(arrayFromJson.data);
+  console.table(arrayFromJson);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
@@ -129,7 +129,6 @@ async function mainEvent() {
 
       // This constant will have the value of your 15-restaurant collection when it processes
       currentList = processRestaurants(arrayFromJson.data);
-      console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
