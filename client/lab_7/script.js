@@ -60,6 +60,14 @@ function processRestaurants(list) {
   */
 }
 
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.inclues(lowerCaseQuery);
+  })
+}
+
 async function mainEvent() {
   /*
     ## Main Event
@@ -88,6 +96,7 @@ async function mainEvent() {
     Dot notation is preferred in JS unless you have a good reason to use brackets
     The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
   */
+  console.log('Test PG County Set')
   console.table(arrayFromJson.data);
 
   // in your browser console, try expanding this object to see what fields are available to work with
@@ -106,10 +115,11 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
-    
+
     form.addEventListener('input', (event) => {
-      console.log('input', event.target.value);
-      injectHTML(currentList);
+      console.log(event.target.value);
+      const newFilterList = filterList(currentList, event.target.value);
+      injectHTML(newFilterList);
     });
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
