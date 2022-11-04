@@ -64,7 +64,7 @@ function filterList(array, filterInputValue) {
   return array.filter((item) => {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
-    return lowerCaseName.inclues(lowerCaseQuery);
+    return lowerCaseName.includes(lowerCaseQuery);
   })
 }
 
