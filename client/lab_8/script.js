@@ -142,8 +142,9 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      const newFilterList = filterList(currentList, event.target.value);
-      injectHTML(newFilterList);
+      const filteredList = filterList(currentList, event.target.value);
+      injectHTML(filteredList);
+      markerPlace(filteredList, pageMap);
     });
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
@@ -155,8 +156,8 @@ async function mainEvent() {
       currentList = processRestaurants(arrayFromJson.data);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(newFilterList);
-      markerPlace(newFilterList, pageMap);
+      injectHTML(currentList);
+      markerPlace(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time
