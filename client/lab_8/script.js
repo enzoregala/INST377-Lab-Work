@@ -79,7 +79,6 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
-  console.log('markerPlace', array);
   // const marker = L.marker([51.5, -0.09]).addTo(map);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -156,8 +155,8 @@ async function mainEvent() {
       currentList = processRestaurants(arrayFromJson.data);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(currentList);
-      markerPlace(currentList, pageMap);
+      injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time
